@@ -71,3 +71,12 @@ PrintWriter out=response.getWriter();
             out.println("</html>");
             
             
+//Servlet_Context_Config
+
+ServletContext sx=new ServletContext();
+ServletConfig s=new ServletConfig();
+
+s.getServerInfo();
+s.getContextPath();
+s.getInitParameter();
+sx.getInitParameter();
