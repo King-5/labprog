@@ -1,0 +1,73 @@
+//SESSION
+PrintWriter out=response.getWriter();
+            HttpSession s=request.getSession();
+
+            String fname=request.getParameter("fname");
+            String lname=request.getParameter("lname");
+            s.setAttribute(fname,fname);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SessionExample</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<p>Is New?:"+s.isNew()+"</p>");
+            out.println("<p>Attribute:"+s.getAttribute(fname)+"</p>");
+            out.println("<p>Creation Time:"+s.getCreationTime()+"</p>");
+            out.println("<p>Last Accessed Time:"+s.getLastAccessedTime()+"</p>");
+            out.println("<p>Max. Inactive Time:"+s.getMaxInactiveInterval()+"</p>");
+            if(s.isNew()){
+            out.println("<body bgcolor=grey>");
+            out.println("<h1>Welcome New User:"+fname+" "+lname+"</h1>");
+            out.println("</body>");
+            }
+            else{
+            out.println("<body bgcolor=red>");
+            out.println("<h1>Welcome Back :"+fname+" "+lname+"</h1>");
+            out.println("</body>");
+            }
+            out.println("</body>");
+            out.println("</html>");
+            
+            //COOKIES
+            Cookie[] ck=request.getCookies();
+           Cookie[] ck1=request.getCookies();
+       
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Cookies Example</title>");     
+            out.println("<h1>Retrieving Cookies</h1>");
+            
+            out.println("<h2>Username : "+ck[0].getValue()+"<br/> Password : "+ck[1].getValue()+"</h2>");
+            
+            out.println("</head>");
+            out.println("</html>");
+            
+            //COOKIE RETRIEVAL
+            String user=request.getParameter("user");
+            String pass=request.getParameter("pass");
+            
+            
+           
+            
+          Cookie ck=new Cookie("user",user);
+          Cookie ck1=new Cookie("pass",pass);
+          
+          ck.setValue(user);
+          ck1.setValue(pass);
+         
+       response.addCookie(ck);
+       response.addCookie(ck1);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Cookies Example</title>");     
+            out.println("<h1>Welcome User"+user+"</h1>");
+            out.println("<form action=Servlet2 method=post>");
+            out.println("<input type=submit value=Go>");
+            out.println("</form>");
+            out.println("</head>");
+            out.println("</html>");
+            
+            
